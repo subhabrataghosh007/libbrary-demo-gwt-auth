@@ -3,8 +3,8 @@ package com.library.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.library.db.UserRepository;
 import com.library.model.User;
+import com.library.repository.UserRepository;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
