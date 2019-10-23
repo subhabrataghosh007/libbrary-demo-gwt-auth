@@ -2,7 +2,7 @@ package com.library.service;
 
 import java.util.List;
 
-import com.library.exception.LibrarianNotFoundException;
+import com.library.exception.NotFoundException;
 import com.library.model.LibrarianDto;
 import com.library.model.User;
 

@@ -2,7 +2,7 @@ package com.library.exception;
 
 import org.springframework.http.HttpStatus;
 
-public class LibrarianBadRequest extends RuntimeException {
+public class NotFoundException extends RuntimeException {
 
 	/**
 	 * 
@@ -12,10 +12,10 @@ public class LibrarianBadRequest extends RuntimeException {
 	private String message;
 	private int statusCode;
 	
-	public LibrarianBadRequest(String msg) {
+	public NotFoundException(String msg) {
 		super(msg);
 		this.message = msg;
-		this.statusCode = HttpStatus.BAD_REQUEST.value();
+		this.statusCode = HttpStatus.NOT_FOUND.value();
 	}
 
 	public String getMessage() {

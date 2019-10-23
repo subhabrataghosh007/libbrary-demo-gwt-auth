@@ -40,10 +40,10 @@ public class UserController {
 		return ResponseEntity.created(location).build();
 	}
 	
-	@PutMapping("/update")
-	public ResponseEntity<Object> updateLibrarian(@RequestBody User user) {
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Object> updateLibrarian(@RequestBody User user, @PathVariable Long id) {
 
-		user = userService.update(user);
+		user = userService.update(user, id);
 
 		URI location = ServletUriComponentsBuilder
 						.fromCurrentRequest()

@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "BOOK")
 public class BookModel {
 
 	@Id
@@ -16,19 +18,15 @@ public class BookModel {
 	@Column
 	private String name;
 	
-	@Column
-	private int rackNumber;
+	@Column(name = "RACKNUMBER")
+	private Integer rackNumber;
 	
-	@Column
+	@Column(name = "CREATEDBY")
 	private String createdBy;
 	
 	public BookModel() {}
 
-	public BookModel(String name, int rackNumber, String createdBy) {
-		this.name = name;
-		this.rackNumber = rackNumber;
-		this.createdBy = createdBy;
-	}
+	
 
 	public Long getId() {
 		return id;
@@ -46,11 +44,11 @@ public class BookModel {
 		this.name = name;
 	}
 
-	public int getRackNumber() {
+	public Integer getRackNumber() {
 		return rackNumber;
 	}
 
-	public void setRackNumber(int rackNumber) {
+	public void setRackNumber(Integer rackNumber) {
 		this.rackNumber = rackNumber;
 	}
 

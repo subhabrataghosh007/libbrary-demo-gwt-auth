@@ -1,9 +1,14 @@
 package com.library.model;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class User {
@@ -12,7 +17,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false)
+	@Column(nullable = false, unique = true)
 	private String username;
 
 	@Column(nullable = false)
@@ -24,6 +29,12 @@ public class User {
 
 	private String permissions = "";
 
+	public User(String username, String password) {
+		this.username = username;
+		this.password = password;
+		this.active = 1;
+	}
+	
 	public User(String username, String password, String roles, String permissions) {
 		this.username = username;
 		this.password = password;

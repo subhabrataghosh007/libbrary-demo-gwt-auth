@@ -26,7 +26,7 @@ public class LibrarianController {
 	@Autowired
 	private LibrarianService librarianService;
 	
-	@PostMapping("/add")
+	@PostMapping
 	public ResponseEntity<Object> addLibrarian(@RequestBody LibrarianDto librarianDto) {
 
 		librarianDto = librarianService.add(librarianDto);
@@ -40,7 +40,7 @@ public class LibrarianController {
 		return ResponseEntity.created(location).build();
 	}
 	
-	@PutMapping("/update")
+	@PutMapping
 	public ResponseEntity<Object> updateLibrarian(@RequestBody LibrarianDto librarianDto) {
 
 		librarianDto = librarianService.update(librarianDto);
@@ -62,7 +62,7 @@ public class LibrarianController {
 		return librarianDtos;
 	}
 	
-	@GetMapping("/find/{id}")
+	@GetMapping("/{id}")
 	public Resource<LibrarianDto> find(@PathVariable long id) {
 		
 		LibrarianDto librarianDto = librarianService.find(id);

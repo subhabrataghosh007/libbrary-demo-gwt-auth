@@ -43,9 +43,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 				// configure access rules
 				.antMatchers(HttpMethod.POST, "/login").permitAll()
 				.antMatchers("/h2-console/**").permitAll()
-				//.antMatchers("/librarian/**").hasAnyRole("Admin", "ADMIN")
 				.antMatchers("/user/**").hasAnyRole("ADMIN")
-				.antMatchers("/librarian/**").hasRole("Librarian")
+				.antMatchers(HttpMethod.POST, "/user/**").hasAnyRole("ADMIN")
+				.antMatchers(HttpMethod.PUT, "/user/**").hasAnyRole("ADMIN")
+				.antMatchers(HttpMethod.GET, "/librarian/**").hasAnyRole("LIBRARIAN")
+				.antMatchers(HttpMethod.POST, "/book").hasAnyRole("ADMIN", "LIBRARIAN")
+				.antMatchers(HttpMethod.PUT, "/book").hasAnyRole("ADMIN", "LIBRARIAN")
+				.antMatchers(HttpMethod.GET, "/book/**").permitAll()
 				.anyRequest().authenticated();
 
 		//for h2 database

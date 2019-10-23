@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.library.exception.LibrarianBadRequest;
-import com.library.exception.LibrarianNotFoundException;
+import com.library.exception.BadRequestException;
+import com.library.exception.NotFoundException;
 import com.library.model.User;
 import com.library.repository.UserRepository;
 
@@ -27,11 +27,11 @@ public class UserService implements UserDAO {
 		return user;
 	}
 	
-	public User update(User user) {
-		if (null != user.getId()) {
+	public User update(User user, Long id) {
+		if (null != id) {
 			user = userRepository.save(user);
 		} else {
-			throw new LibrarianBadRequest("Librarian Not Found");
+			throw new BadRequestException("Librarian Not Found");
 		}
 		
 		return user;
@@ -40,16 +40,16 @@ public class UserService implements UserDAO {
 	public User find(long id) {
 		Optional<User> optional = userRepository.findById(id);
 		
-		return optional.orElseThrow(() -> new LibrarianNotFoundException("Not Found id:"+id));
+		return optional.orElseThrow(() -> new NotFoundException("Not Found id:"+id));
 	}
 
 	public List<User> findAll() {
 		return userRepository.findAll();
 	}
 
-	public void delete(long id) throws LibrarianNotFoundException {
+	public void delete(long id) throws NotFoundException {
 		Optional<User> optional = userRepository.findById(id);
-		optional.orElseThrow(() -> new LibrarianNotFoundException("Not Found id:"+id));
+		optional.orElseThrow(() -> new NotFoundException("Not Found id:"+id));
 
 		userRepository.deleteById(id);
 	}

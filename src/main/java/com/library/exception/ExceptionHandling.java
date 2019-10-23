@@ -11,8 +11,8 @@ import com.library.bean.ErrorResponse;
 public class ExceptionHandling {
 	
 	
-	@ExceptionHandler(value = {LibrarianNotFoundException.class})
-	public ResponseEntity<ErrorResponse> notFound(LibrarianNotFoundException e) {
+	@ExceptionHandler(value = {NotFoundException.class})
+	public ResponseEntity<ErrorResponse> notFound(NotFoundException e) {
 		
 		ErrorResponse errorResponse = new ErrorResponse(e.getMessage(), e.getStatusCode());
 		
@@ -20,8 +20,8 @@ public class ExceptionHandling {
 		
 	}
 	
-	@ExceptionHandler(value = {LibrarianBadRequest.class})
-	public ResponseEntity<ErrorResponse> badRequest(LibrarianBadRequest e) {
+	@ExceptionHandler(value = {BadRequestException.class})
+	public ResponseEntity<ErrorResponse> badRequest(BadRequestException e) {
 		
 		ErrorResponse errorResponse = new ErrorResponse(e.getMessage(), e.getStatusCode());
 		

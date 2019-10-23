@@ -27,9 +27,11 @@ public class DbInit implements CommandLineRunner {
 
 		// Crete users
 		User admin = new User("admin", passwordEncoder.encode("admin123"), "ADMIN", "ACCESS_TEST1");
-		//User rdas = new User("rdas", passwordEncoder.encode("password123"), "ADMIN", "ACCESS_TEST1");
+		User rdas = new User("rdas", passwordEncoder.encode("password123"), "LIBRARIAN", "ACCESS_TEST1");
+		User member1 = new User("member1", passwordEncoder.encode("member23"));
+		User member2 = new User("member2", passwordEncoder.encode("member23"));
 
-		List<User> users = Arrays.asList(admin);
+		List<User> users = Arrays.asList(admin, rdas, member1, member2);
 
 		// Save to db
 		this.userRepository.saveAll(users);
